@@ -24,7 +24,7 @@ import org.apache.http.impl.client.HttpClients;
 @RestController
 public class MainController {
 	
-	private static final String MS1_TEST_URI = "https://host.docker.internal:7070";
+	private static final String MS1_TEST_URI = "https://CdkSt-LB8A1-1E9SFCJPU4RZB-1691428459.us-east-2.elb.amazonaws.com:7070";
 	private static final String PASSWORD = "password";
 	private static final String CERT_PATH = "/clientCert.jks";
 
