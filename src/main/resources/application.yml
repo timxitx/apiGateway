@@ -1,0 +1,10 @@
+cloud:
+    aws:
+        region:
+            static: us-east-2
+        stack:
+            auto: false
+        endpoint:
+            url: http://localhost:4566
+            
+    
