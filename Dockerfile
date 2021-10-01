@@ -11,4 +11,4 @@ COPY /src/main/resources/clientCert.jks /
 ENTRYPOINT ["java", "-jar", "apiGateway.jar"]
 
 HEALTHCHECK --interval=30s --timeout=3s \
-CMD curl -f https://localhost:7070/asctuator/health | grep UP || exit 1
+CMD curl -f https://localhost:8888/asctuator/health | grep UP || exit 1
