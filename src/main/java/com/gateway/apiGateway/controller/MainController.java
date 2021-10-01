@@ -24,10 +24,11 @@ import org.apache.http.impl.client.HttpClients;
 @RestController
 public class MainController {
 	
-	private static final String MS1_TEST_URI1 = "https://CdkSt-LB8A1-124FPNKAP2A8Z-1017171378.us-east-2.elb.amazonaws.com:7070";
-	private static final String MS1_TEST_URI2 = "https://CdkSt-LB8A1-124FPNKAP2A8Z-1017171378.us-east-2.elb.amazonaws.com:8080/test";
-	private static final String MS1_TEST_URI3 = "https://CdkSt-LB8A1-124FPNKAP2A8Z-1017171378.us-east-2.elb.amazonaws.com:9090/test";
-	private static final String MS1_TEST_URI4 = "https://CdkSt-LB8A1-124FPNKAP2A8Z-1017171378.us-east-2.elb.amazonaws.com:7070/upload";
+	private static final String URL_PREFIX = "https://CdkSt-LB8A1-1L4WT80AACKBR-919763910.us-east-2.elb.amazonaws.com";
+	private static final String MS1_TEST_URI1 = URL_PREFIX+":7070";
+	private static final String MS1_TEST_URI2 = URL_PREFIX+":8080/test";
+	private static final String MS1_TEST_URI3 = URL_PREFIX+":9090/test";
+	private static final String MS1_TEST_URI4 = URL_PREFIX+":7070/upload";
 	private static final String PASSWORD = "password";
 	private static final String CERT_PATH = "/clientCert.jks";
 
