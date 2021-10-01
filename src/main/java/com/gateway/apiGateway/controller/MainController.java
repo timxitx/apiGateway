@@ -24,7 +24,7 @@ import org.apache.http.impl.client.HttpClients;
 @RestController
 public class MainController {
 	
-	private static final String URL_PREFIX = "https://CdkSt-LB8A1-1L4WT80AACKBR-919763910.us-east-2.elb.amazonaws.com";
+	private static final String URL_PREFIX = "https://CdkSt-LB8A1-3N5786LEPKC5-1750304150.us-east-2.elb.amazonaws.com";
 	private static final String MS1_TEST_URI1 = URL_PREFIX+":7070";
 	private static final String MS1_TEST_URI2 = URL_PREFIX+":8080/test";
 	private static final String MS1_TEST_URI3 = URL_PREFIX+":9090/test";
