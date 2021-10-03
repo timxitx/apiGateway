@@ -32,7 +32,7 @@ import org.apache.http.impl.client.HttpClients;
 @RestController
 public class MainController {
 	
-	private static final String URL_PREFIX = "https://CdkSt-LB8A1-1BMEQ6O054JAR-115364877.us-east-2.elb.amazonaws.com";
+	private static final String URL_PREFIX = "https://CdkSt-LB8A1-1JX81ELZLDNBA-1456417504.us-east-2.elb.amazonaws.com";
 	private static final String MS1_TEST_URI1 = URL_PREFIX+":7070";
 	private static final String MS1_TEST_URI2 = URL_PREFIX+":8080/test";
 	private static final String MS1_TEST_URI3 = URL_PREFIX+":9090/test";
@@ -50,21 +50,26 @@ public class MainController {
 		}
 	}
 
+	@RequestMapping("/test")
+	public String test() throws Exception {
+		return "This is a test";
+	}
+
 	@RequestMapping("/ms1Test")
 	public String ms1Test() throws Exception {
-		ResponseEntity<String> resp = this.restTemplate.exchange(MS1_TEST_URI1, HttpMethod.GET, requestEntity, String.class);
+		ResponseEntity<String> resp = this.restTemplate.exchange(MS1_TEST_URI1, HttpMethod.GET, this.requestEntity, String.class);
 		return resp.getBody().trim();
 	}
 
 	@RequestMapping("/ms2Test")
 	public String ms2Test() throws Exception {
-		ResponseEntity<String> resp = this.restTemplate.exchange(MS1_TEST_URI2, HttpMethod.GET, requestEntity, String.class);
+		ResponseEntity<String> resp = this.restTemplate.exchange(MS1_TEST_URI2, HttpMethod.GET, this.requestEntity, String.class);
 		return resp.getBody().trim();
 	}
 
 	@RequestMapping("/ms3Test")
 	public String ms3Test() throws Exception {
-		ResponseEntity<String> resp = this.restTemplate.exchange(MS1_TEST_URI3, HttpMethod.GET, requestEntity, String.class);
+		ResponseEntity<String> resp = this.restTemplate.exchange(MS1_TEST_URI3, HttpMethod.GET, this.requestEntity, String.class);
 		return resp.getBody().trim();
 	}
 
@@ -73,8 +78,8 @@ public class MainController {
 		MultiValueMap<String, Object> parts = new LinkedMultiValueMap<String, Object>();
   		parts.add("file", new ByteArrayResource(file.getBytes()));
 		HttpHeaders headers = new HttpHeaders();
-		HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<MultiValueMap<String, Object>>(parts, headers);
-		ResponseEntity<String> resp = this.restTemplate.exchange(MS1_TEST_URI4, HttpMethod.POST, requestEntity, String.class);
+		HttpEntity<MultiValueMap<String, Object>> re = new HttpEntity<MultiValueMap<String, Object>>(parts, headers);
+		ResponseEntity<String> resp = this.restTemplate.exchange(MS1_TEST_URI4, HttpMethod.POST, re, String.class);
 		return resp.getBody().trim();
 	}
 	

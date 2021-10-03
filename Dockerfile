@@ -1,12 +1,12 @@
 FROM openjdk:11
 
 EXPOSE 8888
+
+COPY /src/main/resources/clientCert.jks /
  
 ARG JAR_FILE=target/apiGateway-0.0.1-SNAPSHOT.jar
 
 ADD ${JAR_FILE} apiGateway.jar
-
-COPY /src/main/resources/clientCert.jks /
  
 ENTRYPOINT ["java", "-jar", "apiGateway.jar"]
 
