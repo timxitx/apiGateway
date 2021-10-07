@@ -9,9 +9,11 @@ import java.security.KeyStore;
 import javax.net.ssl.SSLContext;
 
 import org.springframework.core.io.ByteArrayResource;
+import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
@@ -32,7 +34,7 @@ import org.apache.http.impl.client.HttpClients;
 @RestController
 public class MainController {
 	
-	private static final String URL_PREFIX = "https://CdkSt-LB8A1-1JX81ELZLDNBA-1456417504.us-east-2.elb.amazonaws.com";
+	private static final String URL_PREFIX = "https://CdkSt-LB8A1-1B59AY410FIYY-2047389031.us-east-2.elb.amazonaws.com";
 	private static final String MS1_TEST_URI1 = URL_PREFIX+":7070";
 	private static final String MS1_TEST_URI2 = URL_PREFIX+":8080/test";
 	private static final String MS1_TEST_URI3 = URL_PREFIX+":9090/test";
@@ -75,10 +77,11 @@ public class MainController {
 
 	@PostMapping("/upload")
 	public String upload(@RequestParam(value = "file") MultipartFile file) throws Exception {
-		MultiValueMap<String, Object> parts = new LinkedMultiValueMap<String, Object>();
-  		parts.add("file", new ByteArrayResource(file.getBytes()));
+		MultiValueMap<String, Object> body = new LinkedMultiValueMap<>();
+		body.add("file", new ByteArrayResource(file.getBytes()));
 		HttpHeaders headers = new HttpHeaders();
-		HttpEntity<MultiValueMap<String, Object>> re = new HttpEntity<MultiValueMap<String, Object>>(parts, headers);
+		HttpEntity<MultiValueMap<String, Object>> re =
+            new HttpEntity<>(body, headers);
 		ResponseEntity<String> resp = this.restTemplate.exchange(MS1_TEST_URI4, HttpMethod.POST, re, String.class);
 		return resp.getBody().trim();
 	}
